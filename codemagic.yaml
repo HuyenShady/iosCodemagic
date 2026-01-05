@@ -1,5 +1,5 @@
 workflows:
-  ios-debug:
+  ios-release:
     name: iOS Debug Unsigned
     environment:
       xcode: latest
@@ -12,11 +12,12 @@ workflows:
           pod install
       - name: Build iOS app (unsigned)
         script: |
+          export RCT_NO_LAUNCH_PACKAGER=true
           cd ios
           xcodebuild \
             -workspace iosCodemagic.xcworkspace \
             -scheme iosCodemagic \
-            -configuration Debug \
+            -configuration Release \
             -sdk iphoneos \
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
