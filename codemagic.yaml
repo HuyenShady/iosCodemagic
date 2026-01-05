@@ -1,0 +1,23 @@
+workflows:
+  ios-debug:
+    name: iOS Debug Unsigned
+    environment:
+      xcode: latest
+      node: 18
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+          cd ios
+          pod install
+      - name: Build iOS app (unsigned)
+        script: |
+          cd ios
+          xcodebuild \
+            -workspace iosCodemagic.xcworkspace \
+            -scheme iosCodemagic \
+            -configuration Debug \
+            -sdk iphoneos \
+            -derivedDataPath build
+    artifacts:
+      - ios/build/**/*.app
