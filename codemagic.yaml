@@ -18,6 +18,9 @@ workflows:
             -scheme iosCodemagic \
             -configuration Debug \
             -sdk iphoneos \
-            -derivedDataPath build
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
     artifacts:
       - ios/build/**/*.app
