@@ -3,7 +3,7 @@ workflows:
     name: iOS Debug Unsigned
     environment:
       xcode: latest
-      node: 18
+      node: 20
     scripts:
       - name: Install dependencies
         script: |
